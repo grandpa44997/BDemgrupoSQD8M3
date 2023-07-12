@@ -1,16 +1,17 @@
 /*Script com as consultas solicitadas nas rúbricas do trabalho*/
 
-/*1*/
-SELECT COUNT(ID_ESTUDANTE) FROM ESTUDANTE
+/*1 Selecionar a quantidade total de estudantes cadastrados no banco*/
+SELECT COUNT(ID_ESTUDANTE) FROM ESTUDANTE;
 
-/*2*/
+/*2 Selecionar quais pessoas facilitadoras atuam em mais de uma turma*/
 SELECT A.ID_PESSOA_FACILITADORA FACILITADORA, A.NOME
 FROM PESSOA_FACILITADORA A
 INNER JOIN TURMA_PESSOA_FACILITADORA B ON B.ID_PESSOA_FACILITADORA = A.ID_PESSOA_FACILITADORA
 GROUP BY A.ID_PESSOA_FACILITADORA, A.NOME
 HAVING COUNT(DISTINCT B.ID_TURMA) >1
 
-/*3*/
+/*3 Crie uma view que selecione a porcentagem de estudantes com status de evasão agrupados por
+turma*/
 CREATE VIEW ESTUDANTE_INATIVO AS 
 SELECT A.ID_TURMA,
 COUNT(CASE WHEN B.STATUS = 'INATIVO' THEN 1 END) AS ESTUDANTE_INATIVO,
@@ -22,7 +23,8 @@ GROUP BY A.ID_TURMA
 /*Para consultar a VIEW criada é só escrever*/
 SELECT * FROM ESTUDANTE_INATIVO
 
-/*4*/
+/*4 Crie um trigger para ser disparado quando o atributo status de um estudante for atualizado e
+inserir um novo dado em uma tabela de log*/
 CREATE TABLE ESTUDANTE_LOG (
   ID_ESTUDANTE INTEGER,
   DATA_ATUALIZACAO TIMESTAMP DEFAULT NOW(),
@@ -51,9 +53,9 @@ SET STATUS = 'INATIVO'
 WHERE ID_ESTUDANTE = 3
 
 /*Verificando na tabela ESTUDANTE_LOG, foi registrado o log de atualização de status do estudante de ID 3*/
+SELECT * FROM ESTUDANTE_INATIVO
 
-/*5*/
-/* Nome do facilitador soft da turma 2, mostrando o modulo, nome dos alunos e o curso */
+/*5 Nome do facilitador soft da turma 2, mostrando o modulo, nome dos alunos e o curso*/
 SELECT A.NOME AS FACILITADOR,A.FRENTE AS FRENTE,C.ID_TURMA AS TURMA, D.NOME AS MODULO, E.NOME AS ALUNO, F.NOME AS CURSO
 FROM PESSOA_FACILITADORA A
 LEFT JOIN TURMA_PESSOA_FACILITADORA B ON A.ID_PESSOA_FACILITADORA = B.ID_PESSOA_FACILITADORA
@@ -62,4 +64,3 @@ LEFT JOIN MODULO D ON D.ID_MODULO = C.ID_MODULO
 LEFT JOIN ESTUDANTE E ON E.ID_TURMA = C.ID_TURMA
 LEFT JOIN CURSO F ON F.ID_CURSO = C.ID_CURSO
 WHERE C.ID_TURMA = 2 AND A.FRENTE = 'SOFT';
-
