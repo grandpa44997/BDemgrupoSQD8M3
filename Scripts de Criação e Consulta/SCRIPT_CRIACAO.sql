@@ -146,3 +146,22 @@ VALUES
   (4, 4, 3),
   (5, 6, 2),
   (6, 6, 3);
+
+--Alternativamente, podemos povoar as tabelas ESTUDANTE, PESSOA_FACILITADORA e CURSO usando arquivos CSV
+
+/*Para povoar as tabelas usamos 3 arquivos CSV, 2 deles que foram compartilhados nas aulas mas com alterações e 1 desenvolvido pelo último código
+apresentado no trabalho em grupo do 2 módulo*/
+
+/*Para povoar a tabela estudante foi usado o seguinte código(O arquivo vai estar na aba de scripts no GITHUB)*/
+
+COPY ESTUDANTE (ID_ESTUDANTE,NOME,CPF,ID_TURMA) FROM 'AQUI VOCÊ COLOCA O DIRETÓRIO QUE ESTA O ARQUIVO\NOMEARQUIVO.CSV' DELIMITER ',' CSV HEADER
+
+/*Para povoar a tabela curso foi usado o mesmo código*/
+
+COPY CURSO (ID_CURSO,NOME) FROM 'AQUI VOCÊ COLOCA O DIRETÓRIO QUE ESTA O ARQUIVO\NOMEARQUIVO.CSV' DELIMITER ',' CSV HEADER
+
+/*Para povoar a tabela pessoa_facilitadora*/
+
+COPY PESSOA_FACILITADORA (ID_PESSOA_FACILITADORA, NOME, CPF, FRENTE) FROM 'AQUI VOCÊ COLOCA O DIRETÓRIO QUE ESTA O ARQUIVO\NOMEARQUIVO.CSV' DELIMITER ',' CSV HEADER
+
+
