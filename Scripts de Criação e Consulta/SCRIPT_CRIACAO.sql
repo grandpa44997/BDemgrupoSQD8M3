@@ -162,6 +162,9 @@ COPY PESSOA_FACILITADORA (ID_PESSOA_FACILITADORA, NOME, CPF, FRENTE) FROM 'AQUI 
 
 /*É necessário inserir os dados da tabela MODULO e TURMA antes de prosseguir*/
 
+/*
+***Obs.: Deveria ser UPDATE nas tabelas que já foram populadas?
+*/
 INSERT INTO MODULO (ID_MODULO, NOME)
 VALUES
   (0, 'M0'),
