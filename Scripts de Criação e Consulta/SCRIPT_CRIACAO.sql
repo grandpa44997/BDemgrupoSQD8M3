@@ -152,16 +152,32 @@ VALUES
 /*Para povoar as tabelas usamos 3 arquivos CSV, 2 deles que foram compartilhados nas aulas mas com alterações e 1 desenvolvido pelo último código
 apresentado no trabalho em grupo do 2 módulo*/
 
-/*Para povoar a tabela estudante foi usado o seguinte código(O arquivo vai estar na aba de scripts no GITHUB)*/
-
-COPY ESTUDANTE (ID_ESTUDANTE,NOME,CPF,ID_TURMA) FROM 'AQUI VOCÊ COLOCA O DIRETÓRIO QUE ESTA O ARQUIVO\NOMEARQUIVO.CSV' DELIMITER ',' CSV HEADER
-
 /*Para povoar a tabela curso foi usado o mesmo código*/
 
-COPY CURSO (ID_CURSO,NOME) FROM 'AQUI VOCÊ COLOCA O DIRETÓRIO QUE ESTA O ARQUIVO\NOMEARQUIVO.CSV' DELIMITER ',' CSV HEADER
+COPY CURSO (ID_CURSO,NOME) FROM 'AQUI VOCE COLOCA O DIRETORIO DO ARQUIVO /CURSO_SQL.csv' DELIMITER ',' CSV HEADER
 
 /*Para povoar a tabela pessoa_facilitadora*/
 
-COPY PESSOA_FACILITADORA (ID_PESSOA_FACILITADORA, NOME, CPF, FRENTE) FROM 'AQUI VOCÊ COLOCA O DIRETÓRIO QUE ESTA O ARQUIVO\NOMEARQUIVO.CSV' DELIMITER ',' CSV HEADER
+COPY PESSOA_FACILITADORA (ID_PESSOA_FACILITADORA, NOME, CPF, FRENTE) FROM 'AQUI VOCE COLOCA O DIRETORIO DO ARQUIVO /FACILITADORA.csv' DELIMITER ',' CSV HEADER
 
+/*É necessário inserir os dados da tabela MODULO e TURMA antes de prosseguir*/
+
+INSERT INTO MODULO (ID_MODULO, NOME)
+VALUES
+  (0, 'M0'),
+  (1, 'M1'),
+  (2, 'M2'),
+  (3, 'M3'),
+  (4, 'M4'),
+  (5, 'M5');
+
+INSERT INTO TURMA (ID_TURMA, NOME, ID_CURSO, ID_MODULO)
+VALUES
+  (1, 'VamoAI', 1, 3),
+  (2, 'VamoLA', 2, 5),
+  (3, 'ViemosAQUI', 1, 5);
+
+/*Para povoar a tabela estudante foi usado o seguinte código*/
+
+COPY ESTUDANTE (ID_ESTUDANTE,NOME,CPF,ID_TURMA, STATUS) FROM 'AQUI VOCE COLOCA O DIRETORIO DO ARQUIVO /ESTUDANTE.csv' DELIMITER ',' CSV HEADER
 
