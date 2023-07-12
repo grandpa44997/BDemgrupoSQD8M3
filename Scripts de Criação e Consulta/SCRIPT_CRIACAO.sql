@@ -154,11 +154,11 @@ apresentado no trabalho em grupo do 2 módulo*/
 
 /*Para povoar a tabela curso foi usado o mesmo código*/
 
-COPY CURSO (ID_CURSO,NOME) FROM '/var/lib/pgadmin/storage/bikemessengerateu_gmail.com/CURSO_SQL.csv' DELIMITER ',' CSV HEADER
+COPY CURSO (ID_CURSO,NOME) FROM 'AQUI VOCE COLOCA O DIRETORIO DO /CURSO_SQL.csv' DELIMITER ',' CSV HEADER
 
 /*Para povoar a tabela pessoa_facilitadora*/
 
-COPY PESSOA_FACILITADORA (ID_PESSOA_FACILITADORA, NOME, CPF, FRENTE) FROM '/var/lib/pgadmin/storage/bikemessengerateu_gmail.com/FACILITADORA.csv' DELIMITER ',' CSV HEADER
+COPY PESSOA_FACILITADORA (ID_PESSOA_FACILITADORA, NOME, CPF, FRENTE) FROM 'AQUI VOCE COLOCA O DIRETORIO DO /FACILITADORA.csv' DELIMITER ',' CSV HEADER
 
 /*É necessário inserir os dados da tabela MODULO e TURMA antes de prosseguir*/
 
@@ -178,7 +178,7 @@ VALUES
   (3, 'ViemosAQUI', 1, 5);
 
 /*Para povoar a tabela estudante foi usado o seguinte código*/
-COPY ESTUDANTE (ID_ESTUDANTE,NOME,CPF,ID_TURMA, STATUS) FROM '/var/lib/pgadmin/storage/bikemessengerateu_gmail.com/ESTUDANTE.csv' DELIMITER ',' CSV HEADER
+COPY ESTUDANTE (ID_ESTUDANTE,NOME,CPF,ID_TURMA, STATUS) FROM 'AQUI VOCE COLOCA O DIRETORIO DO /ESTUDANTE.csv' DELIMITER ',' CSV HEADER
 
 /*Povoando a tabela TURMA_PESSOA_FACILITADORA*/
 INSERT INTO TURMA_PESSOA_FACILITADORA (ID_TURMA_PESSOA_FACILITADORA, ID_PESSOA_FACILITADORA, ID_TURMA)
