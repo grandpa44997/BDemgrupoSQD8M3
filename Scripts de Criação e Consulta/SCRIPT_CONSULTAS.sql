@@ -55,6 +55,9 @@ WHERE ID_ESTUDANTE = 3
 /*Verificando na tabela ESTUDANTE_LOG, foi registrado o log de atualização de status do estudante de ID 3*/
 SELECT * FROM ESTUDANTE_INATIVO
 
+/* Verificando o log com o momento exato da mudança de status*/
+SELECT * FROM ESTUDANTE_LOG;
+
 /*5 Nome do facilitador soft da turma 2, mostrando o modulo, nome dos alunos e o curso*/
 SELECT A.NOME AS FACILITADOR,A.FRENTE AS FRENTE,C.ID_TURMA AS TURMA, D.NOME AS MODULO, E.NOME AS ALUNO, F.NOME AS CURSO
 FROM PESSOA_FACILITADORA A
